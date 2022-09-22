@@ -17,4 +17,8 @@ Expected with no time features:
 
 -Change name of the project to "The Most Difficult Sudoku"
 
-![image text](https://github.com/NotTheRobot/-SS-SimplestSudoku/blob/main/repImg/menu.jpg)
+Screenshots:
+
+![image text](https://github.com/NotTheRobot/-SS-SimplestSudoku/blob/main/repImg/menu.png)
+![image text](https://github.com/NotTheRobot/-SS-SimplestSudoku/blob/main/repImg/settings.png)
+![image text](https://github.com/NotTheRobot/-SS-SimplestSudoku/blob/main/repImg/sudokuGrid.png)
