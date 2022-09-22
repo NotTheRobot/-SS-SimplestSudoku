@@ -5,7 +5,7 @@ Expected features:
 -Animations
 -Testing Module
 
-Expected with no time features:
+Expected with no time features:\n
 -DI
 -Connecting to remote sudoku seed repository
 -Connecting to local database sudoku seed
