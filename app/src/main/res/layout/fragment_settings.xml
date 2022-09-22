@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.SettingsFragment">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.sudoku.SudokuViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="32dp">
+
+        <TextView
+            android:id="@+id/difficulty_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Сложность"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/minus_difficulty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:contentDescription="@string/app_name"
+                android:gravity="center"
+                android:onClick="@{() -> viewModel.removeDifficulty()}"
+                android:text="-"
+                android:textSize="34sp" />
+
+            <TextView
+                android:id="@+id/difficulty_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="24dp"
+                android:text="@{viewModel.difficulty.toString()}"
+                android:textSize="34sp"
+                tools:text="30"/>
+
+
+            <Button
+                android:id="@+id/plus_difficulty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:contentDescription="@string/app_name"
+                android:gravity="center"
+                android:onClick="@{() -> viewModel.addDifficulty()}"
+                android:text="+"
+                android:textSize="34sp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

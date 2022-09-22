@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.MainMenuFragment">
+
+    <data>
+        <variable
+            name="mainMenuFragment"
+            type="com.example.sudoku.ui.MainMenuFragment" />
+    </data>
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+        <Button
+            android:id="@+id/continue_game_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> mainMenuFragment.continueSudoku()}"
+            android:text="Продолжить"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/start_new_game_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Новая игра"
+            android:onClick="@{() -> mainMenuFragment.launchNewSudoku()}"/>
+
+        <Button
+            android:id="@+id/settings_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Настройки"
+            android:onClick="@{() -> mainMenuFragment.goToSettings()}"/>
+    </LinearLayout>
+
+
+</layout>

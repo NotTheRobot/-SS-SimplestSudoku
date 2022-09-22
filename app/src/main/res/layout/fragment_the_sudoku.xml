@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.TheSudokuFragment">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.sudoku.SudokuViewModel" />
+        <variable
+            name="sudokuFragment"
+            type="com.example.sudoku.ui.TheSudokuFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/sudoku_game_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:padding="0dp">
+
+        <TextView
+            android:id="@+id/timer_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="@{viewModel.stopwatch.showTimer}"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="00:00:00" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:orientation="horizontal"
+            android:padding="6px"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:itemCount="9"
+            tools:listitem="@layout/grid_cell_item" />
+
+        <ImageButton
+            android:id="@+id/change_mode_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="64dp"
+            android:background="#00492222"
+            android:onClick="@{() -> sudokuFragment.changeMode()}"
+            android:src="@drawable/ic_baseline_brightness_1_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:tint="@color/pen" />
+
+        <ImageButton
+            android:id="@+id/one_button"
+            style="@style/Widget.AppCompat.ImageButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="#FFFFFF"
+            android:clickable="true"
+            android:onClick="@{() -> sudokuFragment.onEnterNumber(1)}"
+            app:layout_constraintBottom_toTopOf="@+id/change_mode_button"
+            app:layout_constraintEnd_toStartOf="@+id/two_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/icon_1" />
+
+        <ImageButton
+            android:id="@+id/two_button"
+            style="@style/Widget.AppCompat.ImageButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:clickable="true"
+            android:onClick="@{() -> sudokuFragment.onEnterNumber(2)}"
+            app:layout_constraintBottom_toBottomOf="@+id/one_button"
+            app:layout_constraintEnd_toStartOf="@+id/three_button"
+            app:layout_constraintStart_toEndOf="@+id/one_button"
+            app:srcCompat="@drawable/icon_2" />
+
+        <ImageButton
+            android:id="@+id/three_button"
+            style="@style/Widget.AppCompat.ImageButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+
+            android:clickable="true"
+            android:onClick="@{() -> sudokuFragment.onEnterNumber(3)}"
+            app:layout_constraintBottom_toBottomOf="@+id/one_button"
+            app:layout_constraintEnd_toStartOf="@+id/four_button"
+            app:layout_constraintStart_toEndOf="@+id/two_button"
+            app:srcCompat="@drawable/icon_3" />
+
+        <ImageButton
+            android:id="@+id/four_button"
+            style="@style/Widget.AppCompat.ImageButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+
+            android:clickable="true"
+            android:onClick="@{() -> sudokuFragment.onEnterNumber(4)}"
+            app:layout_constraintBottom_toBottomOf="@+id/one_button"
+            app:layout_constraintEnd_toStartOf="@+id/five_button"
+            app:layout_constraintStart_toEndOf="@+id/three_button"
+            app:srcCompat="@drawable/icon_4" />
+
+        <ImageButton
+            android:id="@+id/five_button"
+            style="@style/Widget.AppCompat.ImageButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+
+            android:clickable="true"
+            android:onClick="@{() -> sudokuFragment.onEnterNumber(5)}"
+            app:layout_constraintBottom_toBottomOf="@+id/one_button"
+            app:layout_constraintEnd_toStartOf="@+id/six_button"
+            app:layout_constraintStart_toEndOf="@+id/four_button"
+            app:srcCompat="@drawable/icon_5" />
+
+        <ImageButton
+            android:id="@+id/six_button"
+            style="@style/Widget.AppCompat.ImageButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+
+            android:clickable="true"
+            android:onClick="@{() -> sudokuFragment.onEnterNumber(6)}"
+            app:layout_constraintBottom_toBottomOf="@+id/one_button"
+            app:layout_constraintEnd_toStartOf="@+id/seven_button"
+            app:layout_constraintStart_toEndOf="@+id/five_button"
+            app:srcCompat="@drawable/icon_6" />
+
+        <ImageButton
+            android:id="@+id/seven_button"
+            style="@style/Widget.AppCompat.ImageButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+
+            android:clickable="true"
+            android:onClick="@{() -> sudokuFragment.onEnterNumber(7)}"
+            app:layout_constraintBottom_toBottomOf="@+id/one_button"
+            app:layout_constraintEnd_toStartOf="@+id/eight_button"
+            app:layout_constraintStart_toEndOf="@+id/six_button"
+            app:srcCompat="@drawable/icon_7" />
+
+        <ImageButton
+            android:id="@+id/eight_button"
+            style="@style/Widget.AppCompat.ImageButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+
+            android:clickable="true"
+            android:onClick="@{() -> sudokuFragment.onEnterNumber(8)}"
+            app:layout_constraintBottom_toBottomOf="@+id/one_button"
+            app:layout_constraintEnd_toStartOf="@+id/nine_button"
+            app:layout_constraintStart_toEndOf="@+id/seven_button"
+            app:srcCompat="@drawable/icon_8" />
+
+        <ImageButton
+            android:id="@+id/nine_button"
+            style="@style/Widget.AppCompat.ImageButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:background="#FFFFFF"
+
+            android:clickable="true"
+            android:onClick="@{() -> sudokuFragment.onEnterNumber(9)}"
+            app:layout_constraintBottom_toBottomOf="@+id/one_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/eight_button"
+            app:srcCompat="@drawable/icon_9" />
+
+        <TextView
+            android:id="@+id/mode_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="PEN"
+            android:textColor="@color/pen"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/change_mode_button"
+            app:layout_constraintStart_toStartOf="@+id/change_mode_button"
+            app:layout_constraintTop_toBottomOf="@+id/change_mode_button" />
+
+        <TextView
+            android:id="@+id/mistakes_counter_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="@{viewModel.mistakesCounter.toString()}"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/timer_textView"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="48dp"
+            android:src="@drawable/ic_baseline_flare_24"
+            app:tint="@color/purple_500"
+            android:onClick="@{() -> sudokuFragment.showPrompt()}"
+            app:layout_constraintBottom_toBottomOf="@+id/change_mode_button"
+            app:layout_constraintEnd_toStartOf="@+id/change_mode_button"
+            app:layout_constraintTop_toTopOf="@+id/change_mode_button" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ошибки: "
+            android:textColor="#000000"
+            android:textSize="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/mistakes_counter_textview"
+            app:layout_constraintEnd_toStartOf="@+id/mistakes_counter_textview" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
